@@ -148,20 +148,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 통계 ─────────────────────────────────────────── */}
-      <section className="py-20 md:py-24 bg-white border-y border-slate-100">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
-            {t.stats.items.map((item, i) => (
-              <div key={i} className="text-center">
-                <div className="text-3xl md:text-5xl font-bold gradient-text mb-2">{item.number}</div>
-                <div className="text-sm text-slate-500 font-medium">{item.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ── 작동 방식 ─────────────────────────────────────── */}
       <section className="py-24 md:py-32 bg-slate-50">
         <div className="max-w-6xl mx-auto px-6">
@@ -217,35 +203,6 @@ export default function Home() {
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">{f.title}</h3>
                 <p className="text-slate-500 leading-relaxed">{f.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 테스티모니얼 ──────────────────────────────────── */}
-      <section className="py-24 md:py-32 bg-slate-950 text-white relative overflow-hidden">
-        <div className="absolute inset-0 hero-aurora opacity-30" />
-        <div className="relative max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16 md:mb-20">
-            <p className="text-violet-300 font-semibold text-sm uppercase tracking-wider mb-3">{t.testimonials.label}</p>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
-              {t.testimonials.heading}
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {t.testimonials.items.map((item, i) => (
-              <div
-                key={i}
-                className="bg-white/5 backdrop-blur border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-colors"
-              >
-                <div className="text-violet-300 text-5xl leading-none mb-4">&ldquo;</div>
-                <p className="text-slate-200 leading-relaxed mb-6 text-sm">{item.quote}</p>
-                <div>
-                  <p className="font-semibold text-white text-sm">{item.author}</p>
-                  <p className="text-slate-400 text-xs">{item.role}</p>
-                </div>
               </div>
             ))}
           </div>
