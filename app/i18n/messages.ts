@@ -120,7 +120,7 @@ export const messages: Record<Locale, Messages> = {
         },
         {
           icon: '🔒',
-          title: 'Strong 모드',
+          title: 'Deep Dive',
           description:
             '입력한 시간 동안은 집중 모드를 종료할 수 없습니다. 미래의 내가 우회하려 할 때를 막아주는 강력한 잠금 기능입니다.',
           badge: 'Pro',
@@ -159,7 +159,7 @@ export const messages: Record<Locale, Messages> = {
         badge: '인기',
         items: [
           '무료 플랜의 모든 기능',
-          'Strong 모드 (시간 제한 잠금)',
+          'Deep Dive (시간 제한 잠금)',
           'Windows 데스크탑 앱',
           '앱 레벨 차단 (카카오톡, 게임 등)',
         ],
@@ -219,7 +219,7 @@ export const messages: Record<Locale, Messages> = {
           role: '대학원생',
         },
         {
-          quote: 'Strong 모드 덕분에 회의 자료 만들 때 3시간 완벽하게 집중했습니다. 평소 같으면 SNS만 들락거렸을 시간이었어요.',
+          quote: 'Deep Dive 덕분에 회의 자료 만들 때 3시간 완벽하게 집중했습니다. 평소 같으면 SNS만 들락거렸을 시간이었어요.',
           author: '이서연',
           role: '디자이너',
         },
@@ -236,7 +236,7 @@ export const messages: Record<Locale, Messages> = {
       items: [
         {
           question: '집중 모드 중에 차단을 해제할 수 있나요?',
-          answer: '일반 모드에서는 언제든 종료할 수 있어요. Strong 모드는 설정한 시간이 끝날 때까지 끌 수 없습니다.',
+          answer: '일반 모드에서는 언제든 종료할 수 있어요. Deep Dive는 설정한 시간이 끝날 때까지 끌 수 없습니다.',
         },
         {
           question: '시크릿 모드로 우회할 수 있나요?',
@@ -244,7 +244,7 @@ export const messages: Record<Locale, Messages> = {
         },
         {
           question: '무료 플랜과 Pro 플랜의 차이가 뭔가요?',
-          answer: '무료 플랜은 기본 사이트 차단을 제공합니다. Pro 플랜은 Strong 모드(시간 잠금)와 Windows 앱(앱 레벨 차단)을 사용할 수 있어요.',
+          answer: '무료 플랜은 기본 사이트 차단을 제공합니다. Pro 플랜은 Deep Dive(시간 잠금)와 Windows 앱(앱 레벨 차단)을 사용할 수 있어요.',
         },
         {
           question: '여러 기기를 동시에 쓸 수 있나요?',
@@ -310,7 +310,7 @@ export const messages: Record<Locale, Messages> = {
         },
         {
           icon: '🔒',
-          title: 'Strong Mode',
+          title: 'Deep Dive',
           description:
             "During the set time, focus mode cannot be stopped. It stops your future self from giving up when tempted.",
           badge: 'Pro',
@@ -349,7 +349,7 @@ export const messages: Record<Locale, Messages> = {
         badge: 'Popular',
         items: [
           'Everything in Free',
-          'Strong Mode (timed lock)',
+          'Deep Dive (timed lock)',
           'Windows desktop app',
           'App-level blocking (games, etc.)',
         ],
@@ -409,7 +409,7 @@ export const messages: Record<Locale, Messages> = {
           role: 'Graduate Student',
         },
         {
-          quote: "Strong Mode helped me focus 3 full hours on a deck. I'd normally have spent that time scrolling.",
+          quote: "Deep Dive helped me focus 3 full hours on a deck. I'd normally have spent that time scrolling.",
           author: 'Seoyeon Lee',
           role: 'Designer',
         },
@@ -426,7 +426,7 @@ export const messages: Record<Locale, Messages> = {
       items: [
         {
           question: 'Can I stop blocking while focus mode is on?',
-          answer: 'Yes, in standard mode you can stop anytime. Strong Mode locks blocking until your timer ends.',
+          answer: 'Yes, in standard mode you can stop anytime. Deep Dive locks blocking until your timer ends.',
         },
         {
           question: 'Can incognito mode bypass it?',
@@ -434,7 +434,7 @@ export const messages: Record<Locale, Messages> = {
         },
         {
           question: "What's the difference between Free and Pro?",
-          answer: 'Free includes basic site blocking. Pro unlocks Strong Mode (timed lock) and the Windows app (app-level blocking).',
+          answer: 'Free includes basic site blocking. Pro unlocks Deep Dive (timed lock) and the Windows app (app-level blocking).',
         },
         {
           question: 'Can I use multiple devices?',
@@ -500,7 +500,7 @@ export const messages: Record<Locale, Messages> = {
         },
         {
           icon: '🔒',
-          title: 'Strongモード',
+          title: 'Deep Dive',
           description:
             '設定した時間中は集中モードを終了できません。未来の自分が回避しようとする瞬間を防ぐ強力なロック機能です。',
           badge: 'Pro',
@@ -539,7 +539,7 @@ export const messages: Record<Locale, Messages> = {
         badge: '人気',
         items: [
           '無料プランのすべての機能',
-          'Strongモード（時間制限ロック）',
+          'Deep Dive（時間制限ロック）',
           'Windowsデスクトップアプリ',
           'アプリレベルのブロック（LINE、ゲームなど）',
         ],
@@ -599,7 +599,7 @@ export const messages: Record<Locale, Messages> = {
           role: '大学院生',
         },
         {
-          quote: 'Strongモードのおかげで資料作成に3時間完璧に集中できました。普段ならSNSばかり見ていた時間です。',
+          quote: 'Deep Diveのおかげで資料作成に3時間完璧に集中できました。普段ならSNSばかり見ていた時間です。',
           author: '佐藤 美咲',
           role: 'デザイナー',
         },
@@ -616,7 +616,7 @@ export const messages: Record<Locale, Messages> = {
       items: [
         {
           question: '集中モード中にブロックを解除できますか？',
-          answer: '通常モードならいつでも終了できます。Strongモードは設定した時間が終わるまで解除できません。',
+          answer: '通常モードならいつでも終了できます。Deep Diveは設定した時間が終わるまで解除できません。',
         },
         {
           question: 'シークレットモードで回避できますか？',
@@ -624,7 +624,7 @@ export const messages: Record<Locale, Messages> = {
         },
         {
           question: '無料プランとProプランの違いは？',
-          answer: '無料プランは基本的なサイトブロックを提供。ProプランはStrongモード（時間ロック）とWindowsアプリ（アプリレベルブロック）を利用可能。',
+          answer: '無料プランは基本的なサイトブロックを提供。ProプランはDeep Dive（時間ロック）とWindowsアプリ（アプリレベルブロック）を利用可能。',
         },
         {
           question: '複数デバイスで使えますか？',
@@ -690,7 +690,7 @@ export const messages: Record<Locale, Messages> = {
         },
         {
           icon: '🔒',
-          title: 'Strong模式',
+          title: 'Deep Dive',
           description:
             '在设定的时间内无法退出专注模式。这是一项强大的锁定功能，能阻止未来想要绕过的自己。',
           badge: 'Pro',
@@ -728,7 +728,7 @@ export const messages: Record<Locale, Messages> = {
         badge: '热门',
         items: [
           '免费版所有功能',
-          'Strong模式（限时锁定）',
+          'Deep Dive（限时锁定）',
           'Windows桌面应用',
           '应用级屏蔽（微信、游戏等）',
         ],
@@ -788,7 +788,7 @@ export const messages: Record<Locale, Messages> = {
           role: '研究生',
         },
         {
-          quote: 'Strong模式让我做PPT时连续专注了3小时。平时这些时间都浪费在刷社交媒体上了。',
+          quote: 'Deep Dive让我做PPT时连续专注了3小时。平时这些时间都浪费在刷社交媒体上了。',
           author: '李静',
           role: '设计师',
         },
@@ -805,7 +805,7 @@ export const messages: Record<Locale, Messages> = {
       items: [
         {
           question: '专注模式中可以解除屏蔽吗？',
-          answer: '普通模式下随时可以停止。Strong模式必须等设定的时间结束后才能关闭。',
+          answer: '普通模式下随时可以停止。Deep Dive必须等设定的时间结束后才能关闭。',
         },
         {
           question: '无痕模式能绕过屏蔽吗？',
@@ -813,7 +813,7 @@ export const messages: Record<Locale, Messages> = {
         },
         {
           question: '免费版和Pro版的区别？',
-          answer: '免费版提供基础网站屏蔽。Pro版解锁Strong模式（限时锁定）和Windows应用（应用级屏蔽）。',
+          answer: '免费版提供基础网站屏蔽。Pro版解锁Deep Dive（限时锁定）和Windows应用（应用级屏蔽）。',
         },
         {
           question: '可以同时使用多个设备吗？',
@@ -879,7 +879,7 @@ export const messages: Record<Locale, Messages> = {
         },
         {
           icon: '🔒',
-          title: 'Modo Strong',
+          title: 'Deep Dive',
           description:
             'Durante el tiempo establecido, el modo de concentración no se puede detener. Detiene a tu yo futuro cuando quiere rendirse ante la tentación.',
           badge: 'Pro',
@@ -918,7 +918,7 @@ export const messages: Record<Locale, Messages> = {
         badge: 'Popular',
         items: [
           'Todo lo del plan Gratis',
-          'Modo Strong (bloqueo temporal)',
+          'Deep Dive (bloqueo temporal)',
           'App de escritorio Windows',
           'Bloqueo a nivel de app (juegos, etc.)',
         ],
@@ -978,7 +978,7 @@ export const messages: Record<Locale, Messages> = {
           role: 'Estudiante de posgrado',
         },
         {
-          quote: 'El modo Strong me ayudó a concentrarme 3 horas en una presentación. Normalmente las habría perdido scrolleando.',
+          quote: 'El Deep Dive me ayudó a concentrarme 3 horas en una presentación. Normalmente las habría perdido scrolleando.',
           author: 'María García',
           role: 'Diseñadora',
         },
@@ -995,7 +995,7 @@ export const messages: Record<Locale, Messages> = {
       items: [
         {
           question: '¿Puedo detener el bloqueo durante el modo concentración?',
-          answer: 'En modo estándar puedes detenerlo cuando quieras. El modo Strong bloquea hasta que termine el temporizador.',
+          answer: 'En modo estándar puedes detenerlo cuando quieras. El Deep Dive bloquea hasta que termine el temporizador.',
         },
         {
           question: '¿Se puede saltar con el modo incógnito?',
@@ -1003,7 +1003,7 @@ export const messages: Record<Locale, Messages> = {
         },
         {
           question: '¿Diferencia entre Gratis y Pro?',
-          answer: 'Gratis incluye bloqueo básico de sitios. Pro desbloquea el modo Strong (bloqueo temporal) y la app de Windows (bloqueo a nivel app).',
+          answer: 'Gratis incluye bloqueo básico de sitios. Pro desbloquea el Deep Dive (bloqueo temporal) y la app de Windows (bloqueo a nivel app).',
         },
         {
           question: '¿Puedo usar varios dispositivos?',
@@ -1069,7 +1069,7 @@ export const messages: Record<Locale, Messages> = {
         },
         {
           icon: '🔒',
-          title: 'Strong-Modus',
+          title: 'Deep Dive',
           description:
             'Während der eingestellten Zeit kann der Fokusmodus nicht beendet werden. Stoppt dein zukünftiges Ich, wenn die Versuchung kommt.',
           badge: 'Pro',
@@ -1108,7 +1108,7 @@ export const messages: Record<Locale, Messages> = {
         badge: 'Beliebt',
         items: [
           'Alles aus dem kostenlosen Plan',
-          'Strong-Modus (zeitbasierte Sperre)',
+          'Deep Dive (zeitbasierte Sperre)',
           'Windows-Desktop-App',
           'App-Ebene-Blockierung (Spiele usw.)',
         ],
@@ -1168,7 +1168,7 @@ export const messages: Record<Locale, Messages> = {
           role: 'Doktorand',
         },
         {
-          quote: 'Mit Strong-Modus war ich 3 Stunden lang voll konzentriert auf eine Präsentation. Normalerweise hätte ich nur gescrollt.',
+          quote: 'Mit Deep Dive war ich 3 Stunden lang voll konzentriert auf eine Präsentation. Normalerweise hätte ich nur gescrollt.',
           author: 'Anna Schmidt',
           role: 'Designerin',
         },
@@ -1185,7 +1185,7 @@ export const messages: Record<Locale, Messages> = {
       items: [
         {
           question: 'Kann ich das Blockieren während des Fokusmodus stoppen?',
-          answer: 'Im Standardmodus jederzeit. Strong-Modus sperrt bis der Timer abgelaufen ist.',
+          answer: 'Im Standardmodus jederzeit. Deep Dive sperrt bis der Timer abgelaufen ist.',
         },
         {
           question: 'Kann der Inkognito-Modus es umgehen?',
@@ -1193,7 +1193,7 @@ export const messages: Record<Locale, Messages> = {
         },
         {
           question: 'Unterschied zwischen Free und Pro?',
-          answer: 'Free bietet grundlegendes Seitenblockieren. Pro schaltet Strong-Modus (zeitbasierte Sperre) und die Windows-App (App-Blockierung) frei.',
+          answer: 'Free bietet grundlegendes Seitenblockieren. Pro schaltet Deep Dive (zeitbasierte Sperre) und die Windows-App (App-Blockierung) frei.',
         },
         {
           question: 'Kann ich mehrere Geräte nutzen?',

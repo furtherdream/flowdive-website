@@ -60,7 +60,7 @@ export default function Home() {
       <header className="absolute top-0 left-0 right-0 z-50">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <a href="/" className="flex items-center gap-2 font-bold text-lg text-white">
-            <span className="text-xl">🎯</span>
+            <img src="/icon.png" alt="" width={24} height={24} className="rounded" />
             <span>Flowdive</span>
           </a>
           <nav className="hidden md:flex items-center gap-10 text-sm font-medium text-slate-300">
@@ -133,7 +133,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="bg-gradient-to-br from-violet-50 to-pink-50 text-slate-900 p-10 text-center">
-                <div className="text-5xl mb-4">🎯</div>
+                <img src="/icon.png" alt="" width={56} height={56} className="mx-auto mb-4 rounded-xl" />
                 <p className="font-bold text-lg mb-2">{t.hero.blockPage.headline}</p>
                 <p className="text-xs text-slate-500 mb-4 uppercase tracking-wider font-medium">
                   {t.hero.blockPage.currentGoal}
@@ -384,7 +384,7 @@ export default function Home() {
       <footer className="bg-slate-950 text-slate-400 py-12 border-t border-white/5">
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
           <div className="flex items-center gap-2 text-white font-semibold">
-            <span>🎯</span>
+            <img src="/icon.png" alt="" width={20} height={20} className="rounded" />
             <span>Flowdive</span>
           </div>
           <p>{t.footer.copyright}</p>

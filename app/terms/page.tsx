@@ -6,7 +6,7 @@ export default function TermsPage() {
   return (
     <main className="max-w-3xl mx-auto px-6 py-20 text-slate-800 font-sans leading-relaxed">
       <a href="/" className="inline-flex items-center gap-2 font-bold text-lg text-slate-900 mb-10">
-        <span>🎯</span><span>Flowdive</span>
+        <img src="/icon.png" alt="" width={24} height={24} className="rounded" /><span>Flowdive</span>
       </a>
 
       <h1 className="text-3xl md:text-4xl font-bold mb-4">이용약관 (Terms of Service)</h1>
@@ -17,7 +17,7 @@ export default function TermsPage() {
       </Section>
 
       <Section title="2. 계정">
-        Strong 모드 및 Pro 기능 이용을 위해 Google 계정을 통한 로그인이 필요합니다. 사용자는 계정 정보의 보안을 유지할 책임이 있습니다.
+        Deep Dive 및 Pro 기능 이용을 위해 Google 계정을 통한 로그인이 필요합니다. 사용자는 계정 정보의 보안을 유지할 책임이 있습니다.
       </Section>
 
       <Section title="3. 구독 및 결제">

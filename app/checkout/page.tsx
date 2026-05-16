@@ -70,7 +70,7 @@ export default function CheckoutPage() {
       <main className="min-h-screen flex items-center justify-center bg-slate-50 font-sans px-6">
         <div className="text-center max-w-md">
           <a href="/" className="inline-flex items-center gap-2 font-bold text-xl text-slate-900 mb-10">
-            <span>🎯</span>
+            <img src="/icon.png" alt="" width={28} height={28} className="rounded" />
             <span>Flowdive</span>
           </a>
 

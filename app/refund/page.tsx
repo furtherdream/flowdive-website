@@ -6,7 +6,7 @@ export default function RefundPage() {
   return (
     <main className="max-w-3xl mx-auto px-6 py-20 text-slate-800 font-sans leading-relaxed">
       <a href="/" className="inline-flex items-center gap-2 font-bold text-lg text-slate-900 mb-10">
-        <span>🎯</span><span>Flowdive</span>
+        <img src="/icon.png" alt="" width={24} height={24} className="rounded" /><span>Flowdive</span>
       </a>
 
       <h1 className="text-3xl md:text-4xl font-bold mb-4">환불 정책 (Refund Policy)</h1>
@@ -28,7 +28,7 @@ export default function RefundPage() {
       <Section title="3. 환불 불가 사유">
         <ul className="list-disc pl-6 space-y-2">
           <li>구독 시작 후 7일이 경과한 경우</li>
-          <li>서비스의 핵심 기능(차단, Strong 모드)을 정상적으로 이용한 정황이 명확한 경우</li>
+          <li>서비스의 핵심 기능(차단, Deep Dive)을 정상적으로 이용한 정황이 명확한 경우</li>
           <li>약관 위반(역공학, 무단 재배포 등)으로 인한 계정 정지</li>
         </ul>
       </Section>

@@ -6,7 +6,7 @@ export default function PrivacyPage() {
   return (
     <main className="max-w-3xl mx-auto px-6 py-20 text-slate-800 font-sans leading-relaxed">
       <a href="/" className="inline-flex items-center gap-2 font-bold text-lg text-slate-900 mb-10">
-        <span>🎯</span><span>Flowdive</span>
+        <img src="/icon.png" alt="" width={24} height={24} className="rounded" /><span>Flowdive</span>
       </a>
 
       <h1 className="text-3xl md:text-4xl font-bold mb-4">개인정보처리방침 (Privacy Notice)</h1>
