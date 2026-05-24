@@ -62,10 +62,11 @@ export default function StatsDashboard() {
     )
   }
 
-  // 8시간 초과 세션은 outlier 로 분리 — 종료 깜빡한 경우 등 비정상 데이터로 차트 왜곡 방지.
+  // 8시간 초과 일반 세션은 outlier 로 분리 — 종료 깜빡한 경우 등 비정상 데이터로 차트 왜곡 방지.
+  // Deepdive 는 의도적으로 길게 설정 가능하므로 길이 무관하게 포함.
   const OUTLIER_THRESHOLD_SEC = 8 * 3600
-  const outliers = rows.filter(r => r.duration_seconds > OUTLIER_THRESHOLD_SEC)
-  const cleanRows = rows.filter(r => r.duration_seconds <= OUTLIER_THRESHOLD_SEC)
+  const outliers = rows.filter(r => !r.is_deep_dive && r.duration_seconds > OUTLIER_THRESHOLD_SEC)
+  const cleanRows = rows.filter(r => r.is_deep_dive || r.duration_seconds <= OUTLIER_THRESHOLD_SEC)
 
   const totalSec = cleanRows.reduce((s, r) => s + r.duration_seconds, 0)
   const totalHours = (totalSec / 3600).toFixed(1)
@@ -82,7 +83,7 @@ export default function StatsDashboard() {
 
       {outliers.length > 0 && (
         <p className="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-md px-3 py-2">
-          ⚠ 종료를 깜빡한 듯한 비정상 긴 세션 {outliers.length}건(8시간 초과)은 차트와 합계에서 제외했습니다.
+          ⚠ 종료를 깜빡한 듯한 비정상 긴 일반 세션 {outliers.length}건(8시간 초과)은 차트와 합계에서 제외했습니다. Deep Dive 는 길이 무관 포함.
         </p>
       )}
 

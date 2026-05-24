@@ -1,0 +1,146 @@
+'use client'
+
+// 전용 가격 페이지 — Paddle 도메인 승인용.
+// 홈의 #pricing 섹션과 같은 i18n 데이터를 재사용하되, 독립 URL 로 제공한다.
+
+import { useTranslation } from '../i18n/context'
+import { LOCALES, LOCALE_LABELS, type Locale } from '../i18n/messages'
+
+const CHROME_STORE_URL = '#'
+const SUPPORT_EMAIL = 'support@flowdive.app'
+
+function CheckIcon({ color = '#a78bfa' }: { color?: string }) {
+  return (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink: 0 }}>
+      <circle cx="9" cy="9" r="9" fill={color} fillOpacity="0.15" />
+      <path d="M5.5 9L7.8 11.5L12.5 6.5" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
+function LanguageSwitcher() {
+  const { locale, setLocale } = useTranslation()
+  return (
+    <select
+      value={locale}
+      onChange={(e) => setLocale(e.target.value as Locale)}
+      aria-label="Language"
+      className="bg-transparent text-sm text-slate-600 hover:text-slate-900 cursor-pointer px-3 py-1.5 rounded-full border border-slate-200 hover:border-slate-300 transition-colors"
+    >
+      {LOCALES.map((l) => (
+        <option key={l} value={l} className="text-slate-900">
+          {LOCALE_LABELS[l]}
+        </option>
+      ))}
+    </select>
+  )
+}
+
+export default function PricingPage() {
+  const { t } = useTranslation()
+
+  return (
+    <main className="min-h-screen bg-white text-slate-900">
+      {/* 헤더 */}
+      <header className="border-b border-slate-100">
+        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+          <a href="/" className="flex items-center gap-2 font-bold text-lg">
+            <img src="/icon.png" alt="" width={24} height={24} className="rounded" />
+            <span>Flowdive</span>
+          </a>
+          <LanguageSwitcher />
+        </div>
+      </header>
+
+      {/* 가격 본문 */}
+      <section className="py-20 md:py-28">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <p className="text-violet-600 font-semibold text-sm uppercase tracking-wider mb-3">{t.pricing.label}</p>
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 mb-4">
+              {t.pricing.heading}
+            </h1>
+            <p className="text-slate-500 text-lg">{t.pricing.subheading}</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* 무료 */}
+            <div className="border border-slate-200 rounded-3xl p-10 bg-white">
+              <p className="text-sm font-semibold text-slate-500 mb-2">{t.pricing.free.name}</p>
+              <div className="flex items-baseline gap-1 mb-8">
+                <span className="text-5xl font-bold text-slate-900">{t.pricing.free.price}</span>
+                <span className="text-slate-400 text-base">{t.pricing.free.period}</span>
+              </div>
+              <a
+                href={CHROME_STORE_URL}
+                className="block w-full text-center bg-slate-100 hover:bg-slate-200 text-slate-900 font-semibold py-3.5 rounded-full transition-colors text-sm mb-8"
+              >
+                {t.pricing.free.cta}
+              </a>
+              <ul className="space-y-4">
+                {t.pricing.free.items.map((item) => (
+                  <li key={item} className="flex items-center gap-3 text-sm text-slate-700">
+                    <CheckIcon color="#64748b" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Pro */}
+            <div className="relative bg-slate-950 text-white rounded-3xl p-10 overflow-hidden">
+              <div className="relative">
+                <div className="flex items-center gap-2 mb-2">
+                  <p className="text-sm font-semibold text-violet-300">{t.pricing.pro.name}</p>
+                  <span className="text-xs bg-violet-500/20 border border-violet-400/30 text-violet-200 px-2.5 py-0.5 rounded-full">
+                    {t.pricing.pro.badge}
+                  </span>
+                </div>
+                <div className="flex items-baseline gap-1 mb-8">
+                  <span className="text-5xl font-bold">{t.pricing.pro.price}</span>
+                  <span className="text-violet-300 text-base">{t.pricing.pro.period}</span>
+                </div>
+                <a
+                  href={CHROME_STORE_URL}
+                  className="block w-full text-center bg-white hover:bg-slate-100 text-slate-900 font-semibold py-3.5 rounded-full transition-colors text-sm mb-8"
+                >
+                  {t.pricing.pro.cta}
+                </a>
+                <ul className="space-y-4">
+                  {t.pricing.pro.items.map((item) => (
+                    <li key={item} className="flex items-center gap-3 text-sm text-violet-50">
+                      <CheckIcon color="#c4b5fd" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* 결제·취소·환불 안내 */}
+          <div className="mt-16 max-w-3xl mx-auto">
+            <h2 className="text-xl font-bold text-slate-900 mb-4">Billing & Subscription</h2>
+            <ul className="space-y-3 text-sm text-slate-600 leading-relaxed">
+              <li>• Subscriptions are billed monthly and renew automatically on the same day each month.</li>
+              <li>• Payments are processed securely by <strong>Paddle.com Market Limited</strong>, our Merchant of Record. Paddle handles invoicing, taxes, and refunds.</li>
+              <li>• You can cancel anytime — Pro features remain active until the end of the current billing period.</li>
+              <li>• For refunds, see our <a href="/refund" className="text-violet-600 underline">refund policy</a>.</li>
+              <li>• Support: <a href={`mailto:${SUPPORT_EMAIL}`} className="text-violet-600 underline">{SUPPORT_EMAIL}</a></li>
+            </ul>
+          </div>
+
+          {/* 푸터 링크 */}
+          <div className="mt-16 pt-8 border-t border-slate-100 text-center text-xs text-slate-400">
+            <div className="flex justify-center gap-6 mb-3">
+              <a href="/terms" className="hover:text-slate-600">Terms</a>
+              <a href="/privacy" className="hover:text-slate-600">Privacy</a>
+              <a href="/refund" className="hover:text-slate-600">Refund</a>
+            </div>
+            <p>© 2026 Flowdive</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  )
+}
