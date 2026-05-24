@@ -62,18 +62,29 @@ export default function StatsDashboard() {
     )
   }
 
-  const totalSec = rows.reduce((s, r) => s + r.duration_seconds, 0)
+  // 8시간 초과 세션은 outlier 로 분리 — 종료 깜빡한 경우 등 비정상 데이터로 차트 왜곡 방지.
+  const OUTLIER_THRESHOLD_SEC = 8 * 3600
+  const outliers = rows.filter(r => r.duration_seconds > OUTLIER_THRESHOLD_SEC)
+  const cleanRows = rows.filter(r => r.duration_seconds <= OUTLIER_THRESHOLD_SEC)
+
+  const totalSec = cleanRows.reduce((s, r) => s + r.duration_seconds, 0)
   const totalHours = (totalSec / 3600).toFixed(1)
-  const deepDiveCount = rows.filter(r => r.is_deep_dive).length
+  const deepDiveCount = cleanRows.filter(r => r.is_deep_dive).length
 
   return (
     <div className="space-y-10">
       {/* 요약 */}
       <section className="grid grid-cols-3 gap-4">
         <SummaryCard label="총 집중 시간" value={`${totalHours}h`} />
-        <SummaryCard label="총 세션" value={`${rows.length}회`} />
+        <SummaryCard label="총 세션" value={`${cleanRows.length}회`} />
         <SummaryCard label="Deep Dive" value={`${deepDiveCount}회`} accent />
       </section>
+
+      {outliers.length > 0 && (
+        <p className="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-md px-3 py-2">
+          ⚠ 종료를 깜빡한 듯한 비정상 긴 세션 {outliers.length}건(8시간 초과)은 차트와 합계에서 제외했습니다.
+        </p>
+      )}
 
       {/* 1. 일/주/월 집중 시간 */}
       <section>
@@ -82,7 +93,7 @@ export default function StatsDashboard() {
         </SectionHeader>
         <ChartCard>
           <ResponsiveContainer width="100%" height={260}>
-            <BarChart data={aggregateByPeriod(rows, period)} margin={{ left: -10 }}>
+            <BarChart data={aggregateByPeriod(cleanRows, period)} margin={{ left: -10 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" vertical={false} />
               <XAxis dataKey="label" fontSize={11} stroke="#9CA3AF" />
               <YAxis fontSize={11} stroke="#9CA3AF" tickFormatter={(v) => `${v}h`} />
@@ -107,7 +118,7 @@ export default function StatsDashboard() {
               <Pie
                 data={[
                   { name: 'Deep Dive', value: deepDiveCount },
-                  { name: '일반 집중', value: rows.length - deepDiveCount },
+                  { name: '일반 집중', value: cleanRows.length - deepDiveCount },
                 ]}
                 cx="50%" cy="50%"
                 innerRadius={60} outerRadius={95}
@@ -132,13 +143,13 @@ export default function StatsDashboard() {
           <div className="grid grid-cols-2 divide-x divide-slate-200 text-center py-6">
             <div>
               <p className="text-3xl font-bold text-slate-900">
-                {avg(rows.map(r => r.blocked_sites_count)).toFixed(1)}
+                {avg(cleanRows.map(r => r.blocked_sites_count)).toFixed(1)}
               </p>
               <p className="text-xs text-slate-500 mt-1">사이트</p>
             </div>
             <div>
               <p className="text-3xl font-bold text-slate-900">
-                {avg(rows.map(r => r.blocked_apps_count)).toFixed(1)}
+                {avg(cleanRows.map(r => r.blocked_apps_count)).toFixed(1)}
               </p>
               <p className="text-xs text-slate-500 mt-1">앱</p>
             </div>
@@ -154,7 +165,7 @@ export default function StatsDashboard() {
         <SectionHeader title="자주 쓴 목표 키워드" />
         <ChartCard>
           {(() => {
-            const top = topKeywords(rows)
+            const top = topKeywords(cleanRows)
             if (top.length === 0) {
               return (
                 <p className="text-sm text-slate-400 text-center py-8">
