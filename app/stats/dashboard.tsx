@@ -6,9 +6,9 @@
 //   3) (참고) 평소 차단 사이트/앱 개수 평균 — top blocked 는 향후 blocks_triggered 데이터 모이면 강화
 //   4) 목표 키워드 빈도 (가장 자주 쓰인 단어 Top 10)
 
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
-  BarChart, Bar, LineChart, Line, PieChart, Pie, Cell,
+  BarChart, Bar, PieChart, Pie, Cell,
   XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Legend,
 } from 'recharts'
 import { getSupabase } from '../../lib/supabaseClient'
@@ -86,7 +86,12 @@ export default function StatsDashboard() {
               <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" vertical={false} />
               <XAxis dataKey="label" fontSize={11} stroke="#9CA3AF" />
               <YAxis fontSize={11} stroke="#9CA3AF" tickFormatter={(v) => `${v}h`} />
-              <Tooltip formatter={(v: number) => [`${v.toFixed(1)}h`, '집중 시간']} />
+              <Tooltip
+                formatter={(value) => {
+                  const v = typeof value === 'number' ? value : Number(value) || 0
+                  return [`${v.toFixed(1)}h`, '집중 시간']
+                }}
+              />
               <Bar dataKey="hours" fill={BRAND} radius={[6, 6, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
