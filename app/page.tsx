@@ -45,6 +45,7 @@ function ArrowRight() {
 
 const CHROME_STORE_URL = '#'
 const WINDOWS_DOWNLOAD_URL = '#'
+const ANDROID_DOWNLOAD_URL = '#'
 
 // ─────────────────────────────────────────────────────────
 // 메인 페이지
@@ -129,7 +130,7 @@ export default function Home() {
                   <div className="w-3 h-3 rounded-full bg-green-300" />
                 </div>
                 <div className="flex-1 bg-white rounded-md px-3 py-1 text-xs text-slate-500">
-                  youtube.com
+                  instagram.com
                 </div>
               </div>
               <div className="bg-gradient-to-br from-violet-50 to-pink-50 text-slate-900 p-10 text-center">
@@ -323,7 +324,7 @@ export default function Home() {
             <p className="text-slate-500 text-lg">{t.download.subheading}</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-2xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-4xl mx-auto">
             <a
               href={CHROME_STORE_URL}
               className="group bg-gradient-to-br from-slate-50 to-white border border-slate-200 hover:border-violet-300 rounded-3xl p-8 text-left card-hover"
@@ -345,6 +346,18 @@ export default function Home() {
               <p className="text-slate-500 text-sm mb-5">{t.download.windows.description}</p>
               <div className="flex items-center gap-2 text-violet-600 text-sm font-semibold group-hover:gap-3 transition-all">
                 {t.download.windows.cta}
+                <ArrowRight />
+              </div>
+            </a>
+            <a
+              href={ANDROID_DOWNLOAD_URL}
+              className="group bg-gradient-to-br from-slate-50 to-white border border-slate-200 hover:border-violet-300 rounded-3xl p-8 text-left card-hover"
+            >
+              <div className="text-4xl mb-5">📱</div>
+              <p className="font-bold text-lg text-slate-900 mb-1">{t.download.android.title}</p>
+              <p className="text-slate-500 text-sm mb-5">{t.download.android.description}</p>
+              <div className="flex items-center gap-2 text-violet-600 text-sm font-semibold group-hover:gap-3 transition-all">
+                {t.download.android.cta}
                 <ArrowRight />
               </div>
             </a>

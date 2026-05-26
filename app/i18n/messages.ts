@@ -66,6 +66,7 @@ type Messages = {
     subheading: string
     chrome: { title: string; description: string; cta: string }
     windows: { title: string; description: string; cta: string }
+    android: { title: string; description: string; cta: string }
   }
   finalCta: {
     heading: string
@@ -174,9 +175,14 @@ export const messages: Record<Locale, Messages> = {
         cta: 'Chrome 웹 스토어에서 설치',
       },
       windows: {
-        title: 'Windows 앱',
+        title: 'Windows / macOS 앱',
         description: '앱 레벨 차단 포함 · Pro',
-        cta: '.exe 다운로드',
+        cta: '데스크탑 앱 다운로드',
+      },
+      android: {
+        title: 'Android 앱',
+        description: 'Deep Dive 모바일 풀 락 · Pro',
+        cta: 'Google Play 에서 받기',
       },
     },
     stats: {
@@ -364,9 +370,14 @@ export const messages: Record<Locale, Messages> = {
         cta: 'Install from Chrome Web Store',
       },
       windows: {
-        title: 'Windows App',
+        title: 'Windows / macOS App',
         description: 'App-level blocking included · Pro',
-        cta: 'Download .exe',
+        cta: 'Download desktop app',
+      },
+      android: {
+        title: 'Android App',
+        description: 'Mobile full lockdown for Deep Dive · Pro',
+        cta: 'Get it on Google Play',
       },
     },
     stats: {
@@ -554,9 +565,14 @@ export const messages: Record<Locale, Messages> = {
         cta: 'Chromeウェブストアからインストール',
       },
       windows: {
-        title: 'Windowsアプリ',
+        title: 'Windows / macOS アプリ',
         description: 'アプリレベルのブロック搭載 · Pro',
-        cta: '.exeをダウンロード',
+        cta: 'デスクトップアプリをダウンロード',
+      },
+      android: {
+        title: 'Android アプリ',
+        description: 'Deep Dive モバイル完全ロック · Pro',
+        cta: 'Google Play で入手',
       },
     },
     stats: {
@@ -743,9 +759,14 @@ export const messages: Record<Locale, Messages> = {
         cta: '从Chrome网上应用店安装',
       },
       windows: {
-        title: 'Windows应用',
+        title: 'Windows / macOS 应用',
         description: '包含应用级屏蔽 · Pro',
-        cta: '下载.exe',
+        cta: '下载桌面应用',
+      },
+      android: {
+        title: 'Android 应用',
+        description: 'Deep Dive 移动端完全锁定 · Pro',
+        cta: '在 Google Play 获取',
       },
     },
     stats: {
@@ -933,9 +954,14 @@ export const messages: Record<Locale, Messages> = {
         cta: 'Instalar desde Chrome Web Store',
       },
       windows: {
-        title: 'App de Windows',
+        title: 'App de Windows / macOS',
         description: 'Incluye bloqueo a nivel de app · Pro',
-        cta: 'Descargar .exe',
+        cta: 'Descargar app de escritorio',
+      },
+      android: {
+        title: 'App de Android',
+        description: 'Bloqueo total móvil para Deep Dive · Pro',
+        cta: 'Obtener en Google Play',
       },
     },
     stats: {
@@ -1123,9 +1149,14 @@ export const messages: Record<Locale, Messages> = {
         cta: 'Aus dem Chrome Web Store installieren',
       },
       windows: {
-        title: 'Windows-App',
+        title: 'Windows / macOS App',
         description: 'App-Ebene-Blockierung enthalten · Pro',
-        cta: '.exe herunterladen',
+        cta: 'Desktop-App herunterladen',
+      },
+      android: {
+        title: 'Android App',
+        description: 'Mobile Komplettsperre für Deep Dive · Pro',
+        cta: 'Bei Google Play laden',
       },
     },
     stats: {
