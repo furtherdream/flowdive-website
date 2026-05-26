@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useTranslation } from './i18n/context'
 import { LOCALES, LOCALE_LABELS, type Locale } from './i18n/messages'
 
@@ -45,7 +45,17 @@ function ArrowRight() {
 
 const CHROME_STORE_URL = '#'
 const WINDOWS_DOWNLOAD_URL = '#'
+const MAC_DOWNLOAD_URL = '#'
 const ANDROID_DOWNLOAD_URL = '#'
+
+// 사용자 OS 감지 → 데스크탑 다운로드 URL 자동 선택.
+// SSR 시에는 Windows 기본값 (서버에선 navigator 없음), 클라이언트에서 useEffect 로 보정.
+function detectDesktopUrl(): string {
+  if (typeof navigator === 'undefined') return WINDOWS_DOWNLOAD_URL
+  const ua = navigator.userAgent.toLowerCase()
+  if (ua.includes('mac')) return MAC_DOWNLOAD_URL
+  return WINDOWS_DOWNLOAD_URL
+}
 
 // ─────────────────────────────────────────────────────────
 // 메인 페이지
@@ -54,6 +64,10 @@ const ANDROID_DOWNLOAD_URL = '#'
 export default function Home() {
   const { t } = useTranslation()
   const [openFaq, setOpenFaq] = useState<number | null>(0)
+  // 데스크탑 다운로드 URL — Mac 이면 .dmg, 그 외(Windows/Linux/모바일) 면 .exe.
+  // SSR 안정성 위해 초기엔 Windows, 마운트 후 navigator 검사로 갱신.
+  const [desktopDownloadUrl, setDesktopDownloadUrl] = useState(WINDOWS_DOWNLOAD_URL)
+  useEffect(() => { setDesktopDownloadUrl(detectDesktopUrl()) }, [])
 
   return (
     <div className="min-h-screen bg-white text-slate-900">
@@ -104,7 +118,7 @@ export default function Home() {
             {t.hero.subtitle}
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20 flex-wrap">
             <a
               href={CHROME_STORE_URL}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-100 text-slate-900 font-semibold px-8 py-4 rounded-full transition-all text-base shadow-2xl shadow-violet-500/20"
@@ -113,10 +127,16 @@ export default function Home() {
               <ArrowRight />
             </a>
             <a
-              href={WINDOWS_DOWNLOAD_URL}
+              href={desktopDownloadUrl}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 backdrop-blur border border-white/10 hover:border-white/20 text-white font-semibold px-8 py-4 rounded-full transition-colors text-base"
             >
               {t.hero.ctaSecondary}
+            </a>
+            <a
+              href={ANDROID_DOWNLOAD_URL}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 backdrop-blur border border-white/10 hover:border-white/20 text-white font-semibold px-8 py-4 rounded-full transition-colors text-base"
+            >
+              {t.hero.ctaTertiary}
             </a>
           </div>
 
@@ -338,7 +358,7 @@ export default function Home() {
               </div>
             </a>
             <a
-              href={WINDOWS_DOWNLOAD_URL}
+              href={desktopDownloadUrl}
               className="group bg-gradient-to-br from-slate-50 to-white border border-slate-200 hover:border-violet-300 rounded-3xl p-8 text-left card-hover"
             >
               <div className="text-4xl mb-5">🖥️</div>
@@ -375,7 +395,7 @@ export default function Home() {
           <p className="text-slate-300 text-lg md:text-xl leading-relaxed mb-10 max-w-xl mx-auto">
             {t.finalCta.subheading}
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 flex-wrap">
             <a
               href={CHROME_STORE_URL}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-100 text-slate-900 font-semibold px-8 py-4 rounded-full transition-colors text-base"
@@ -384,10 +404,16 @@ export default function Home() {
               <ArrowRight />
             </a>
             <a
-              href={WINDOWS_DOWNLOAD_URL}
+              href={desktopDownloadUrl}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur border border-white/20 text-white font-semibold px-8 py-4 rounded-full transition-colors text-base"
             >
               {t.finalCta.ctaSecondary}
+            </a>
+            <a
+              href={ANDROID_DOWNLOAD_URL}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur border border-white/20 text-white font-semibold px-8 py-4 rounded-full transition-colors text-base"
+            >
+              {t.finalCta.ctaTertiary}
             </a>
           </div>
         </div>

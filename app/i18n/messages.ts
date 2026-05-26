@@ -27,6 +27,7 @@ type Messages = {
     subtitle: string
     ctaPrimary: string
     ctaSecondary: string
+    ctaTertiary: string
     blockPage: { headline: string; currentGoal: string; sampleGoal: string; timer: string }
   }
   stats: {
@@ -73,6 +74,7 @@ type Messages = {
     subheading: string
     ctaPrimary: string
     ctaSecondary: string
+    ctaTertiary: string
   }
   footer: { copyright: string; privacy: string; terms: string }
 }
@@ -88,12 +90,13 @@ export const messages: Record<Locale, Messages> = {
       cta: 'Chrome에 추가',
     },
     hero: {
-      badge: 'Chrome 확장 + Windows 데스크탑 앱',
+      badge: 'Chrome 확장 + 데스크탑 + Android',
       title: '무의식적인 방문이\n집중을 깨뜨립니다',
       subtitle:
-        '일해야 할 시간에 무심코 YouTube를 열고 있나요?\nFlowdive이 그 순간을 막고, 목표를 상기시켜드립니다.',
+        '일해야 할 시간에 무심코 Instagram 을 열고 있나요?\nFlowdive 이 그 순간을 막고, 목표를 상기시켜드립니다.',
       ctaPrimary: 'Chrome에 무료로 추가하기',
-      ctaSecondary: 'Windows 앱 다운로드',
+      ctaSecondary: '데스크탑 앱 다운로드',
+      ctaTertiary: 'Android 앱 받기',
       blockPage: {
         headline: '지금은 집중 시간이에요',
         currentGoal: '현재 목표',
@@ -111,7 +114,7 @@ export const messages: Record<Locale, Messages> = {
           icon: '🚫',
           title: '사이트 차단',
           description:
-            'YouTube, Netflix, Instagram 등 집중을 방해하는 사이트를 차단 리스트에 추가하세요. 집중 모드 중에는 접근이 차단됩니다.',
+            'Twitter, Netflix, Instagram 등 집중을 방해하는 사이트를 차단 리스트에 추가하세요. 집중 모드 중에는 접근이 차단됩니다.',
         },
         {
           icon: '🎯',
@@ -206,7 +209,7 @@ export const messages: Record<Locale, Messages> = {
         {
           number: '02',
           title: '방해 요소를 등록',
-          description: 'YouTube, 인스타그램, 게임 — 무엇이든 차단 리스트에 추가하세요.',
+          description: 'Instagram, 인스타그램, 게임 — 무엇이든 차단 리스트에 추가하세요.',
         },
         {
           number: '03',
@@ -266,7 +269,8 @@ export const messages: Record<Locale, Messages> = {
       heading: '오늘부터 집중하세요',
       subheading: '의지가 약해서가 아닙니다. 환경이 그렇게 만들어진 거예요. Flowdive이 그 환경을 바꿔드립니다.',
       ctaPrimary: 'Chrome에 무료로 추가',
-      ctaSecondary: 'Windows 앱 다운로드',
+      ctaSecondary: '데스크탑 앱 다운로드',
+      ctaTertiary: 'Android 앱 받기',
     },
     footer: {
       copyright: '© 2025 Flowdive. All rights reserved.',
@@ -283,12 +287,13 @@ export const messages: Record<Locale, Messages> = {
       cta: 'Add to Chrome',
     },
     hero: {
-      badge: 'Chrome Extension + Windows Desktop App',
+      badge: 'Chrome Extension + Desktop + Android',
       title: 'Mindless browsing\nbreaks your focus',
       subtitle:
-        'Do you find yourself opening YouTube without thinking?\nFlowdive blocks that moment and reminds you of your goal.',
+        'Do you find yourself opening Instagram without thinking?\nFlowdive blocks that moment and reminds you of your goal.',
       ctaPrimary: 'Add to Chrome — Free',
-      ctaSecondary: 'Download for Windows',
+      ctaSecondary: 'Download desktop app',
+      ctaTertiary: 'Get Android app',
       blockPage: {
         headline: 'Time to focus',
         currentGoal: 'Current Goal',
@@ -306,7 +311,7 @@ export const messages: Record<Locale, Messages> = {
           icon: '🚫',
           title: 'Site Blocking',
           description:
-            'Add distracting sites like YouTube, Netflix, or Instagram to your block list. During focus mode, access is blocked and redirected.',
+            'Add distracting sites like Twitter, Netflix, or Instagram to your block list. During focus mode, access is blocked and redirected.',
         },
         {
           icon: '🎯',
@@ -401,7 +406,7 @@ export const messages: Record<Locale, Messages> = {
         {
           number: '02',
           title: 'Add distractions',
-          description: 'YouTube, Instagram, games — drop them into your block list.',
+          description: 'Twitter, Instagram, games — drop them into your block list.',
         },
         {
           number: '03',
@@ -415,7 +420,7 @@ export const messages: Record<Locale, Messages> = {
       heading: 'People who got their focus back',
       items: [
         {
-          quote: "I used to open YouTube without thinking. That habit is gone — seeing my goal on the blocked page snaps me back instantly.",
+          quote: "I used to open Instagram without thinking. That habit is gone — seeing my goal on the blocked page snaps me back instantly.",
           author: 'Minjae Kim',
           role: 'Graduate Student',
         },
@@ -461,7 +466,8 @@ export const messages: Record<Locale, Messages> = {
       heading: 'Focus, starting today',
       subheading: "It's not weak willpower — your environment is built to distract you. Flowdive rebuilds it.",
       ctaPrimary: 'Add to Chrome — Free',
-      ctaSecondary: 'Download for Windows',
+      ctaSecondary: 'Download desktop app',
+      ctaTertiary: 'Get Android app',
     },
     footer: {
       copyright: '© 2025 Flowdive. All rights reserved.',
@@ -478,12 +484,13 @@ export const messages: Record<Locale, Messages> = {
       cta: 'Chromeに追加',
     },
     hero: {
-      badge: 'Chrome拡張機能 + Windowsデスクトップアプリ',
+      badge: 'Chrome拡張 + デスクトップ + Android',
       title: '無意識な訪問が\n集中を妨げます',
       subtitle:
-        '仕事の時間に何気なくYouTubeを開いていませんか？\nFlowdiveがその瞬間を防ぎ、目標を思い出させます。',
+        '仕事の時間に何気なくInstagramを開いていませんか？\nFlowdiveがその瞬間を防ぎ、目標を思い出させます。',
       ctaPrimary: 'Chromeに無料で追加',
-      ctaSecondary: 'Windowsアプリをダウンロード',
+      ctaSecondary: 'デスクトップアプリをダウンロード',
+      ctaTertiary: 'Androidアプリを入手',
       blockPage: {
         headline: '今は集中時間です',
         currentGoal: '現在の目標',
@@ -501,7 +508,7 @@ export const messages: Record<Locale, Messages> = {
           icon: '🚫',
           title: 'サイトブロック',
           description:
-            'YouTube、Netflix、Instagramなど集中を妨げるサイトをブロックリストに追加しましょう。集中モード中はアクセスが遮断されます。',
+            'Twitter、Netflix、Instagramなど集中を妨げるサイトをブロックリストに追加しましょう。集中モード中はアクセスが遮断されます。',
         },
         {
           icon: '🎯',
@@ -596,7 +603,7 @@ export const messages: Record<Locale, Messages> = {
         {
           number: '02',
           title: '妨害要素を登録',
-          description: 'YouTube、Instagram、ゲーム — なんでもブロックリストに追加。',
+          description: 'Twitter、Instagram、ゲーム — なんでもブロックリストに追加。',
         },
         {
           number: '03',
@@ -610,7 +617,7 @@ export const messages: Record<Locale, Messages> = {
       heading: '集中を取り戻した人たち',
       items: [
         {
-          quote: '以前は何気なくYouTubeを開いていましたが、今はその習慣が消えました。ブロックページの目標を見ると気が引き締まります。',
+          quote: '以前は何気なくInstagramを開いていましたが、今はその習慣が消えました。ブロックページの目標を見ると気が引き締まります。',
           author: '木村 健太',
           role: '大学院生',
         },
@@ -656,7 +663,8 @@ export const messages: Record<Locale, Messages> = {
       heading: '今日から集中しよう',
       subheading: '意志が弱いのではありません。環境がそうさせるのです。Flowdiveがその環境を変えます。',
       ctaPrimary: 'Chromeに無料で追加',
-      ctaSecondary: 'Windowsアプリをダウンロード',
+      ctaSecondary: 'デスクトップアプリをダウンロード',
+      ctaTertiary: 'Androidアプリを入手',
     },
     footer: {
       copyright: '© 2025 Flowdive. All rights reserved.',
@@ -673,12 +681,13 @@ export const messages: Record<Locale, Messages> = {
       cta: '添加到Chrome',
     },
     hero: {
-      badge: 'Chrome扩展 + Windows桌面应用',
+      badge: 'Chrome 扩展 + 桌面 + Android',
       title: '无意识的浏览\n打断你的专注',
       subtitle:
-        '工作时间会不自觉地打开YouTube吗？\nFlowdive会阻止那一刻，并提醒你的目标。',
+        '工作时间会不自觉地打开Instagram吗？\nFlowdive会阻止那一刻，并提醒你的目标。',
       ctaPrimary: '免费添加到Chrome',
-      ctaSecondary: '下载Windows版',
+      ctaSecondary: '下载桌面应用',
+      ctaTertiary: '获取 Android 应用',
       blockPage: {
         headline: '现在是专注时间',
         currentGoal: '当前目标',
@@ -696,7 +705,7 @@ export const messages: Record<Locale, Messages> = {
           icon: '🚫',
           title: '网站屏蔽',
           description:
-            '将YouTube、Netflix、Instagram等干扰性网站添加到屏蔽列表。专注模式期间访问将被阻止。',
+            '将Twitter、Netflix、Instagram等干扰性网站添加到屏蔽列表。专注模式期间访问将被阻止。',
         },
         {
           icon: '🎯',
@@ -790,7 +799,7 @@ export const messages: Record<Locale, Messages> = {
         {
           number: '02',
           title: '添加干扰源',
-          description: 'YouTube、Instagram、游戏——任何东西都可加入屏蔽列表。',
+          description: 'Twitter、Instagram、游戏——任何东西都可加入屏蔽列表。',
         },
         {
           number: '03',
@@ -804,7 +813,7 @@ export const messages: Record<Locale, Messages> = {
       heading: '重获专注的人们',
       items: [
         {
-          quote: '以前工作时总是无意识地打开YouTube，现在这个习惯消失了。看到屏蔽页面上的目标，立刻清醒。',
+          quote: '以前工作时总是无意识地打开Instagram，现在这个习惯消失了。看到屏蔽页面上的目标，立刻清醒。',
           author: '张明',
           role: '研究生',
         },
@@ -850,7 +859,8 @@ export const messages: Record<Locale, Messages> = {
       heading: '从今天开始专注',
       subheading: '不是意志薄弱，是环境让你分心。Flowdive帮你重塑环境。',
       ctaPrimary: '免费添加到Chrome',
-      ctaSecondary: '下载Windows版',
+      ctaSecondary: '下载桌面应用',
+      ctaTertiary: '获取 Android 应用',
     },
     footer: {
       copyright: '© 2025 Flowdive. 保留所有权利。',
@@ -867,12 +877,13 @@ export const messages: Record<Locale, Messages> = {
       cta: 'Añadir a Chrome',
     },
     hero: {
-      badge: 'Extensión de Chrome + App de escritorio Windows',
+      badge: 'Extensión de Chrome + Escritorio + Android',
       title: 'La navegación inconsciente\nrompe tu concentración',
       subtitle:
-        '¿Te encuentras abriendo YouTube sin pensar?\nFlowdive detiene ese momento y te recuerda tu objetivo.',
+        '¿Te encuentras abriendo Instagram sin pensar?\nFlowdive detiene ese momento y te recuerda tu objetivo.',
       ctaPrimary: 'Añadir a Chrome — Gratis',
-      ctaSecondary: 'Descargar para Windows',
+      ctaSecondary: 'Descargar app de escritorio',
+      ctaTertiary: 'Obtener app de Android',
       blockPage: {
         headline: 'Hora de concentrarse',
         currentGoal: 'Objetivo actual',
@@ -890,7 +901,7 @@ export const messages: Record<Locale, Messages> = {
           icon: '🚫',
           title: 'Bloqueo de sitios',
           description:
-            'Añade sitios distractores como YouTube, Netflix o Instagram a tu lista de bloqueo. Durante el modo de concentración, el acceso se bloquea.',
+            'Añade sitios distractores como Instagram, Netflix o Instagram a tu lista de bloqueo. Durante el modo de concentración, el acceso se bloquea.',
         },
         {
           icon: '🎯',
@@ -985,7 +996,7 @@ export const messages: Record<Locale, Messages> = {
         {
           number: '02',
           title: 'Añade distracciones',
-          description: 'YouTube, Instagram, juegos — lo que sea, ponlo en tu lista de bloqueo.',
+          description: 'Twitter, Instagram, juegos — lo que sea, ponlo en tu lista de bloqueo.',
         },
         {
           number: '03',
@@ -999,7 +1010,7 @@ export const messages: Record<Locale, Messages> = {
       heading: 'Gente que recuperó su concentración',
       items: [
         {
-          quote: 'Antes abría YouTube sin pensar. Ese hábito desapareció — ver mi objetivo en la página bloqueada me devuelve al instante.',
+          quote: 'Antes abría Instagram sin pensar. Ese hábito desapareció — ver mi objetivo en la página bloqueada me devuelve al instante.',
           author: 'Carlos Ruiz',
           role: 'Estudiante de posgrado',
         },
@@ -1045,7 +1056,8 @@ export const messages: Record<Locale, Messages> = {
       heading: 'Concéntrate, empezando hoy',
       subheading: 'No es falta de voluntad — tu entorno está hecho para distraerte. Flowdive lo reconstruye.',
       ctaPrimary: 'Añadir a Chrome — Gratis',
-      ctaSecondary: 'Descargar para Windows',
+      ctaSecondary: 'Descargar app de escritorio',
+      ctaTertiary: 'Obtener app de Android',
     },
     footer: {
       copyright: '© 2025 Flowdive. Todos los derechos reservados.',
@@ -1062,12 +1074,13 @@ export const messages: Record<Locale, Messages> = {
       cta: 'Zu Chrome hinzufügen',
     },
     hero: {
-      badge: 'Chrome-Erweiterung + Windows-Desktop-App',
+      badge: 'Chrome-Erweiterung + Desktop + Android',
       title: 'Gedankenloses Surfen\nzerstört deinen Fokus',
       subtitle:
-        'Öffnest du YouTube, ohne nachzudenken?\nFlowdive blockiert diesen Moment und erinnert dich an dein Ziel.',
+        'Öffnest du Instagram, ohne nachzudenken?\nFlowdive blockiert diesen Moment und erinnert dich an dein Ziel.',
       ctaPrimary: 'Kostenlos zu Chrome hinzufügen',
-      ctaSecondary: 'Für Windows herunterladen',
+      ctaSecondary: 'Desktop-App herunterladen',
+      ctaTertiary: 'Android-App holen',
       blockPage: {
         headline: 'Zeit zum Fokussieren',
         currentGoal: 'Aktuelles Ziel',
@@ -1085,7 +1098,7 @@ export const messages: Record<Locale, Messages> = {
           icon: '🚫',
           title: 'Webseiten blockieren',
           description:
-            'Füge ablenkende Seiten wie YouTube, Netflix oder Instagram zur Blockliste hinzu. Im Fokusmodus wird der Zugriff blockiert.',
+            'Füge ablenkende Seiten wie Instagram, Netflix oder Instagram zur Blockliste hinzu. Im Fokusmodus wird der Zugriff blockiert.',
         },
         {
           icon: '🎯',
@@ -1180,7 +1193,7 @@ export const messages: Record<Locale, Messages> = {
         {
           number: '02',
           title: 'Ablenkungen hinzufügen',
-          description: 'YouTube, Instagram, Spiele — alles, was ablenkt, kommt auf die Blockliste.',
+          description: 'Twitter, Instagram, Spiele — alles, was ablenkt, kommt auf die Blockliste.',
         },
         {
           number: '03',
@@ -1194,7 +1207,7 @@ export const messages: Record<Locale, Messages> = {
       heading: 'Menschen, die ihren Fokus zurück haben',
       items: [
         {
-          quote: 'Früher öffnete ich YouTube ohne nachzudenken. Diese Gewohnheit ist weg — mein Ziel auf der Blockseite reißt mich sofort raus.',
+          quote: 'Früher öffnete ich Instagram ohne nachzudenken. Diese Gewohnheit ist weg — mein Ziel auf der Blockseite reißt mich sofort raus.',
           author: 'Lukas Müller',
           role: 'Doktorand',
         },
@@ -1240,7 +1253,8 @@ export const messages: Record<Locale, Messages> = {
       heading: 'Fokussiere ab heute',
       subheading: 'Es ist nicht mangelnde Willenskraft — dein Umfeld ist auf Ablenkung gebaut. Flowdive baut es um.',
       ctaPrimary: 'Kostenlos zu Chrome hinzufügen',
-      ctaSecondary: 'Für Windows herunterladen',
+      ctaSecondary: 'Desktop-App herunterladen',
+      ctaTertiary: 'Android-App holen',
     },
     footer: {
       copyright: '© 2025 Flowdive. Alle Rechte vorbehalten.',
