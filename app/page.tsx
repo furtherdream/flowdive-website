@@ -64,6 +64,8 @@ function detectDesktopUrl(): string {
 export default function Home() {
   const { t } = useTranslation()
   const [openFaq, setOpenFaq] = useState<number | null>(0)
+  // Pro 플랜 토글 — 월/연/평생
+  const [proPlan, setProPlan] = useState<'monthly' | 'yearly' | 'lifetime'>('monthly')
   // 데스크탑 다운로드 URL — Mac 이면 .dmg, 그 외(Windows/Linux/모바일) 면 .exe.
   // SSR 안정성 위해 초기엔 Windows, 마운트 후 navigator 검사로 갱신.
   const [desktopDownloadUrl, setDesktopDownloadUrl] = useState(WINDOWS_DOWNLOAD_URL)
@@ -269,15 +271,45 @@ export default function Home() {
             <div className="relative bg-slate-950 text-white rounded-3xl p-10 overflow-hidden">
               <div className="absolute inset-0 opacity-30 pro-card-glow" />
               <div className="relative">
-                <div className="flex items-center gap-2 mb-2">
+                <div className="flex items-center gap-2 mb-4">
                   <p className="text-sm font-semibold text-violet-300">{t.pricing.pro.name}</p>
                   <span className="text-xs bg-violet-500/20 border border-violet-400/30 text-violet-200 px-2.5 py-0.5 rounded-full">
                     {t.pricing.pro.badge}
                   </span>
                 </div>
+
+                {/* 플랜 토글: 월 / 년 / 평생 */}
+                <div className="inline-flex bg-white/5 border border-white/10 rounded-full p-1 mb-6 text-xs font-medium">
+                  {(['monthly', 'yearly', 'lifetime'] as const).map((p) => (
+                    <button
+                      key={p}
+                      type="button"
+                      onClick={() => setProPlan(p)}
+                      className={`px-4 py-1.5 rounded-full transition-colors ${
+                        proPlan === p
+                          ? 'bg-white text-slate-900'
+                          : 'text-violet-200 hover:text-white'
+                      }`}
+                    >
+                      {t.pricing.planLabel[p]}
+                      {p === 'yearly' && proPlan !== 'yearly' && (
+                        <span className="ml-1.5 text-[10px] text-emerald-300">·{t.pricing.yearlyBadge}</span>
+                      )}
+                      {p === 'lifetime' && proPlan !== 'lifetime' && (
+                        <span className="ml-1.5 text-[10px] text-amber-300">·{t.pricing.lifetimeBadge}</span>
+                      )}
+                    </button>
+                  ))}
+                </div>
+
                 <div className="flex items-baseline gap-1 mb-8">
-                  <span className="text-5xl font-bold">{t.pricing.pro.price}</span>
-                  <span className="text-violet-300 text-base">{t.pricing.pro.period}</span>
+                  <span className="text-5xl font-bold">{t.pricing.pro[proPlan].price}</span>
+                  <span className="text-violet-300 text-base">{t.pricing.pro[proPlan].period}</span>
+                  {proPlan === 'lifetime' && (
+                    <span className="ml-2 text-xs bg-amber-400/20 border border-amber-300/30 text-amber-200 px-2 py-0.5 rounded-full">
+                      {t.pricing.lifetimeBadge}
+                    </span>
+                  )}
                 </div>
                 <a
                   href="#"

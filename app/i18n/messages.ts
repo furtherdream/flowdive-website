@@ -54,8 +54,19 @@ type Messages = {
     label: string
     heading: string
     subheading: string
+    planLabel: { monthly: string; yearly: string; lifetime: string }
+    lifetimeBadge: string  // "초기 이벤트" 등
+    yearlyBadge: string    // "17% 할인" 등
     free: { name: string; price: string; period: string; cta: string; items: string[] }
-    pro: { name: string; price: string; period: string; cta: string; badge: string; items: string[] }
+    pro: {
+      name: string
+      badge: string
+      cta: string
+      items: string[]
+      monthly: { price: string; period: string }
+      yearly: { price: string; period: string }
+      lifetime: { price: string; period: string }
+    }
   }
   faq: {
     label: string
@@ -143,6 +154,9 @@ export const messages: Record<Locale, Messages> = {
       heading: '시작은 무료로',
       subheading:
         '기본 차단 기능은 무료입니다. 더 강력한 집중이 필요할 때 업그레이드하세요.',
+      planLabel: { monthly: '월간', yearly: '연간', lifetime: '평생' },
+      lifetimeBadge: '초기 이벤트',
+      yearlyBadge: '17% 할인',
       free: {
         name: '무료',
         price: '₩0',
@@ -157,16 +171,18 @@ export const messages: Record<Locale, Messages> = {
       },
       pro: {
         name: 'Pro',
-        price: '₩9,900',
-        period: '/월',
         cta: 'Pro 구독하기',
         badge: '인기',
         items: [
           '무료 플랜의 모든 기능',
           'Deep Dive (시간 제한 잠금)',
-          'Windows 데스크탑 앱',
+          'Windows / macOS / Android 풀 락',
           '앱 레벨 차단 (카카오톡, 게임 등)',
+          '멀티 기기 실시간 동기화',
         ],
+        monthly: { price: '₩5,900', period: '/월' },
+        yearly: { price: '₩59,000', period: '/년' },
+        lifetime: { price: '₩59,000', period: '평생' },
       },
     },
     download: {
@@ -295,7 +311,7 @@ export const messages: Record<Locale, Messages> = {
       ctaSecondary: 'Download desktop app',
       ctaTertiary: 'Get Android app',
       blockPage: {
-        headline: 'Time to focus',
+        headline: 'Time to dive into FLOW',
         currentGoal: 'Current Goal',
         sampleGoal: 'Write chapter 3 of thesis',
         timer: 'Focused for 42 min',
@@ -340,6 +356,9 @@ export const messages: Record<Locale, Messages> = {
       heading: 'Start for free',
       subheading:
         'Core blocking is free. Upgrade when you need stronger focus.',
+      planLabel: { monthly: 'Monthly', yearly: 'Yearly', lifetime: 'Lifetime' },
+      lifetimeBadge: 'Launch deal',
+      yearlyBadge: 'Save 17%',
       free: {
         name: 'Free',
         price: '$0',
@@ -354,16 +373,18 @@ export const messages: Record<Locale, Messages> = {
       },
       pro: {
         name: 'Pro',
-        price: '$7.99',
-        period: '/mo',
         cta: 'Subscribe to Pro',
         badge: 'Popular',
         items: [
           'Everything in Free',
           'Deep Dive (timed lock)',
-          'Windows desktop app',
+          'Windows / macOS / Android full lockdown',
           'App-level blocking (games, etc.)',
+          'Real-time multi-device sync',
         ],
+        monthly: { price: '$4.9', period: '/mo' },
+        yearly: { price: '$49', period: '/yr' },
+        lifetime: { price: '$49', period: 'one-time' },
       },
     },
     download: {
@@ -537,6 +558,9 @@ export const messages: Record<Locale, Messages> = {
       heading: '無料で始めよう',
       subheading:
         '基本のブロック機能は無料です。より強力な集中が必要な時にアップグレードしてください。',
+      planLabel: { monthly: '月額', yearly: '年額', lifetime: '永年' },
+      lifetimeBadge: 'ローンチ特典',
+      yearlyBadge: '17% OFF',
       free: {
         name: '無料',
         price: '¥0',
@@ -551,16 +575,18 @@ export const messages: Record<Locale, Messages> = {
       },
       pro: {
         name: 'Pro',
-        price: '¥980',
-        period: '/月',
         cta: 'Proを購読',
         badge: '人気',
         items: [
           '無料プランのすべての機能',
           'Deep Dive（時間制限ロック）',
-          'Windowsデスクトップアプリ',
+          'Windows / macOS / Android 完全ロック',
           'アプリレベルのブロック（LINE、ゲームなど）',
+          'マルチデバイス リアルタイム同期',
         ],
+        monthly: { price: '¥598', period: '/月' },
+        yearly: { price: '¥5,980', period: '/年' },
+        lifetime: { price: '¥5,980', period: '買い切り' },
       },
     },
     download: {
@@ -733,6 +759,9 @@ export const messages: Record<Locale, Messages> = {
       label: '价格政策',
       heading: '免费开始',
       subheading: '核心屏蔽功能免费。需要更强专注时升级。',
+      planLabel: { monthly: '月付', yearly: '年付', lifetime: '永久' },
+      lifetimeBadge: '上线特惠',
+      yearlyBadge: '省 17%',
       free: {
         name: '免费',
         price: '¥0',
@@ -747,16 +776,18 @@ export const messages: Record<Locale, Messages> = {
       },
       pro: {
         name: 'Pro',
-        price: '¥58',
-        period: '/月',
         cta: '订阅Pro',
         badge: '热门',
         items: [
           '免费版所有功能',
           'Deep Dive（限时锁定）',
-          'Windows桌面应用',
+          'Windows / macOS / Android 完全锁定',
           '应用级屏蔽（微信、游戏等）',
+          '多设备实时同步',
         ],
+        monthly: { price: '¥28', period: '/月' },
+        yearly: { price: '¥288', period: '/年' },
+        lifetime: { price: '¥288', period: '一次性' },
       },
     },
     download: {
@@ -930,6 +961,9 @@ export const messages: Record<Locale, Messages> = {
       heading: 'Empieza gratis',
       subheading:
         'El bloqueo principal es gratis. Mejora cuando necesites más concentración.',
+      planLabel: { monthly: 'Mensual', yearly: 'Anual', lifetime: 'De por vida' },
+      lifetimeBadge: 'Oferta de lanzamiento',
+      yearlyBadge: 'Ahorra 17%',
       free: {
         name: 'Gratis',
         price: '$0',
@@ -944,16 +978,18 @@ export const messages: Record<Locale, Messages> = {
       },
       pro: {
         name: 'Pro',
-        price: '$7.99',
-        period: '/mes',
         cta: 'Suscribirse a Pro',
         badge: 'Popular',
         items: [
           'Todo lo del plan Gratis',
           'Deep Dive (bloqueo temporal)',
-          'App de escritorio Windows',
+          'Bloqueo total en Windows / macOS / Android',
           'Bloqueo a nivel de app (juegos, etc.)',
+          'Sincronización en tiempo real entre dispositivos',
         ],
+        monthly: { price: '$4.9', period: '/mes' },
+        yearly: { price: '$49', period: '/año' },
+        lifetime: { price: '$49', period: 'pago único' },
       },
     },
     download: {
@@ -1127,6 +1163,9 @@ export const messages: Record<Locale, Messages> = {
       heading: 'Kostenlos starten',
       subheading:
         'Grundlegende Blockierung ist kostenlos. Upgrade, wenn du stärkeren Fokus brauchst.',
+      planLabel: { monthly: 'Monatlich', yearly: 'Jährlich', lifetime: 'Einmalig' },
+      lifetimeBadge: 'Launch-Angebot',
+      yearlyBadge: '17% sparen',
       free: {
         name: 'Kostenlos',
         price: '0 €',
@@ -1141,16 +1180,18 @@ export const messages: Record<Locale, Messages> = {
       },
       pro: {
         name: 'Pro',
-        price: '7,99 €',
-        period: '/Mon.',
         cta: 'Pro abonnieren',
         badge: 'Beliebt',
         items: [
           'Alles aus dem kostenlosen Plan',
           'Deep Dive (zeitbasierte Sperre)',
-          'Windows-Desktop-App',
+          'Windows / macOS / Android Komplettsperre',
           'App-Ebene-Blockierung (Spiele usw.)',
+          'Echtzeit-Sync über alle Geräte',
         ],
+        monthly: { price: '$4.9', period: '/Mon.' },
+        yearly: { price: '$49', period: '/Jahr' },
+        lifetime: { price: '$49', period: 'Einmalzahlung' },
       },
     },
     download: {

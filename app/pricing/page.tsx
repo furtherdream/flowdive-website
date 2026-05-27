@@ -3,6 +3,7 @@
 // 전용 가격 페이지 — Paddle 도메인 승인용.
 // 홈의 #pricing 섹션과 같은 i18n 데이터를 재사용하되, 독립 URL 로 제공한다.
 
+import { useState } from 'react'
 import { useTranslation } from '../i18n/context'
 import { LOCALES, LOCALE_LABELS, type Locale } from '../i18n/messages'
 
@@ -38,6 +39,7 @@ function LanguageSwitcher() {
 
 export default function PricingPage() {
   const { t } = useTranslation()
+  const [proPlan, setProPlan] = useState<'monthly' | 'yearly' | 'lifetime'>('monthly')
 
   return (
     <main className="min-h-screen bg-white text-slate-900">
@@ -90,15 +92,45 @@ export default function PricingPage() {
             {/* Pro */}
             <div className="relative bg-slate-950 text-white rounded-3xl p-10 overflow-hidden">
               <div className="relative">
-                <div className="flex items-center gap-2 mb-2">
+                <div className="flex items-center gap-2 mb-4">
                   <p className="text-sm font-semibold text-violet-300">{t.pricing.pro.name}</p>
                   <span className="text-xs bg-violet-500/20 border border-violet-400/30 text-violet-200 px-2.5 py-0.5 rounded-full">
                     {t.pricing.pro.badge}
                   </span>
                 </div>
+
+                {/* 플랜 토글 */}
+                <div className="inline-flex bg-white/5 border border-white/10 rounded-full p-1 mb-6 text-xs font-medium">
+                  {(['monthly', 'yearly', 'lifetime'] as const).map((p) => (
+                    <button
+                      key={p}
+                      type="button"
+                      onClick={() => setProPlan(p)}
+                      className={`px-4 py-1.5 rounded-full transition-colors ${
+                        proPlan === p
+                          ? 'bg-white text-slate-900'
+                          : 'text-violet-200 hover:text-white'
+                      }`}
+                    >
+                      {t.pricing.planLabel[p]}
+                      {p === 'yearly' && proPlan !== 'yearly' && (
+                        <span className="ml-1.5 text-[10px] text-emerald-300">·{t.pricing.yearlyBadge}</span>
+                      )}
+                      {p === 'lifetime' && proPlan !== 'lifetime' && (
+                        <span className="ml-1.5 text-[10px] text-amber-300">·{t.pricing.lifetimeBadge}</span>
+                      )}
+                    </button>
+                  ))}
+                </div>
+
                 <div className="flex items-baseline gap-1 mb-8">
-                  <span className="text-5xl font-bold">{t.pricing.pro.price}</span>
-                  <span className="text-violet-300 text-base">{t.pricing.pro.period}</span>
+                  <span className="text-5xl font-bold">{t.pricing.pro[proPlan].price}</span>
+                  <span className="text-violet-300 text-base">{t.pricing.pro[proPlan].period}</span>
+                  {proPlan === 'lifetime' && (
+                    <span className="ml-2 text-xs bg-amber-400/20 border border-amber-300/30 text-amber-200 px-2 py-0.5 rounded-full">
+                      {t.pricing.lifetimeBadge}
+                    </span>
+                  )}
                 </div>
                 <a
                   href={CHROME_STORE_URL}
