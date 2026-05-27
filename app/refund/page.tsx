@@ -1,5 +1,7 @@
 export const metadata = {
-  title: 'Refund Policy — Flowdive',
+  title: 'Refund Policy',
+  description: 'Flowdive 구독·결제 환불 정책. Paddle 을 통한 환불 절차 안내.',
+  alternates: { canonical: 'https://flowdive.app/refund' },
 }
 
 export default function RefundPage() {

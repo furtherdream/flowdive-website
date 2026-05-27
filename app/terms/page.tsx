@@ -1,5 +1,7 @@
 export const metadata = {
-  title: 'Terms of Service — Flowdive',
+  title: 'Terms of Service',
+  description: 'Flowdive 서비스 이용약관. 계정, 구독, 결제, 환불 등에 관한 조건.',
+  alternates: { canonical: 'https://flowdive.app/terms' },
 }
 
 export default function TermsPage() {

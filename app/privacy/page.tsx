@@ -1,5 +1,7 @@
 export const metadata = {
-  title: 'Privacy Notice — Flowdive',
+  title: 'Privacy Notice',
+  description: 'How Flowdive collects, stores, and processes your personal data.',
+  alternates: { canonical: 'https://flowdive.app/privacy' },
 }
 
 export default function PrivacyPage() {
