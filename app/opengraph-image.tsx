@@ -5,6 +5,7 @@
 import { ImageResponse } from 'next/og'
 
 // runtime='edge' 는 Vercel 전용. GitHub Pages 정적 export 에선 빌드 타임에 nodejs 로 생성.
+export const dynamic = 'force-static'
 export const alt = 'Flowdive — Dive into flow'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'

@@ -1,5 +1,8 @@
 import type { MetadataRoute } from 'next'
 
+// `output: 'export'` 정적 빌드에서 라우트 핸들러를 빌드 타임에 정적으로 생성하도록 명시.
+export const dynamic = 'force-static'
+
 const SITE_URL = 'https://flowdive.app'
 
 export default function robots(): MetadataRoute.Robots {
