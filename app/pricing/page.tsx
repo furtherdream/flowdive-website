@@ -3,6 +3,7 @@
 // 전용 가격 페이지 — Paddle 도메인 승인용.
 // 홈의 #pricing 섹션과 같은 i18n 데이터를 재사용하되, 독립 URL 로 제공한다.
 
+import Script from 'next/script'
 import { useEffect, useState } from 'react'
 import { useTranslation } from '../i18n/context'
 import { LOCALES, LOCALE_LABELS, type Locale } from '../i18n/messages'
@@ -12,6 +13,7 @@ import {
   currencyFromIp,
   type Currency,
 } from '../i18n/currency'
+import { openPaddleCheckout } from '../lib/paddle'
 
 const CHROME_STORE_URL = '#'
 const SUPPORT_EMAIL = 'support@flowdive.app'
@@ -56,6 +58,9 @@ export default function PricingPage() {
 
   return (
     <main className="min-h-screen bg-white text-slate-900">
+      {/* Paddle Checkout overlay SDK */}
+      <Script src="https://cdn.paddle.com/paddle/v2/paddle.js" strategy="afterInteractive" />
+
       {/* 헤더 */}
       <header className="border-b border-slate-100">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -145,12 +150,13 @@ export default function PricingPage() {
                     </span>
                   )}
                 </div>
-                <a
-                  href={CHROME_STORE_URL}
+                <button
+                  type="button"
+                  onClick={() => openPaddleCheckout(proPlan)}
                   className="block w-full text-center bg-white hover:bg-slate-100 text-slate-900 font-semibold py-3.5 rounded-full transition-colors text-sm mb-8"
                 >
                   {t.pricing.pro.cta}
-                </a>
+                </button>
                 <ul className="space-y-4">
                   {t.pricing.pro.items.map((item) => (
                     <li key={item} className="flex items-center gap-3 text-sm text-violet-50">
