@@ -13,23 +13,17 @@ const TOKEN = process.env.NEXT_PUBLIC_PADDLE_CLIENT_TOKEN
 
 let initialized = false
 
-declare global {
-  interface Window {
-    Paddle?: {
-      Initialize: (opts: { token: string; eventCallback?: (e: { name: string }) => void }) => void
-      Checkout: { open: (opts: { items: { priceId: string; quantity: number }[]; customer?: { email: string } }) => void }
-    }
-  }
-}
+// Window.Paddle 글로벌 타입은 app/checkout/page.tsx 에 이미 `any` 로 선언되어 있어
+// 여기서 더 좁은 타입을 재선언하면 declaration merging 충돌. inline 캐스팅으로 회피.
 
 function ensureInit() {
   if (initialized) return true
   if (typeof window === 'undefined') return false
-  const Paddle = window.Paddle
+  const Paddle = (window as { Paddle?: { Initialize: (opts: object) => void } }).Paddle
   if (!Paddle || !TOKEN) return false
   Paddle.Initialize({
     token: TOKEN,
-    eventCallback: (e) => {
+    eventCallback: (e: { name: string }) => {
       if (e.name === 'checkout.completed') {
         console.log('[paddle] checkout completed — Pro 활성화는 webhook 처리')
       }
@@ -45,7 +39,7 @@ export function openPaddleCheckout(plan: PaddlePlan, opts: { email?: string } = 
     alert('결제 시스템 로드 중. 잠시 후 다시 시도해주세요.')
     return
   }
-  const Paddle = window.Paddle!
+  const Paddle = (window as { Paddle?: { Checkout: { open: (opts: object) => void } } }).Paddle!
   Paddle.Checkout.open({
     items: [{ priceId: PRICE_IDS[plan], quantity: 1 }],
     ...(opts.email ? { customer: { email: opts.email } } : {}),
