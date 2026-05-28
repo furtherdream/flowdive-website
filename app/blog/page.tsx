@@ -1,4 +1,4 @@
-// 영어 블로그 목록 — canonical /blog. 한국어 목록은 /ko/blog.
+// 블로그 목록 — 영어 전용. 비영어권 사용자는 브라우저 자동 번역으로 열람.
 
 import Link from 'next/link'
 import { listBlogPosts } from '../lib/blog'
@@ -6,17 +6,11 @@ import { listBlogPosts } from '../lib/blog'
 export const metadata = {
   title: 'Blog',
   description: 'Flowdive blog — focus, deep work, and engineering attention.',
-  alternates: {
-    canonical: 'https://flowdive.app/blog',
-    languages: {
-      en: 'https://flowdive.app/blog',
-      ko: 'https://flowdive.app/ko/blog',
-    },
-  },
+  alternates: { canonical: 'https://flowdive.app/blog' },
 }
 
 export default function BlogIndex() {
-  const posts = listBlogPosts('en')
+  const posts = listBlogPosts()
 
   return (
     <main className="min-h-screen bg-white text-slate-900">
@@ -34,12 +28,6 @@ export default function BlogIndex() {
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 mb-12">
           Dive deeper into focus
         </h1>
-
-        <div className="flex items-center gap-3 mb-12 text-sm">
-          <Link href="/blog" className="font-semibold text-slate-900">English</Link>
-          <span className="text-slate-300">·</span>
-          <Link href="/ko/blog" className="text-slate-500 hover:text-slate-900">한국어</Link>
-        </div>
 
         {posts.length === 0 ? (
           <p className="text-slate-500">No posts yet.</p>

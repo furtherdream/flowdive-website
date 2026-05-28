@@ -1,4 +1,5 @@
-// 영어 글 상세 — canonical /blog/<slug>. 한국어 alternate 가 있으면 hreflang + 보기 버튼.
+// 개별 블로그 글 — MDX 본문 렌더 + JSON-LD Article 스키마.
+// 영어 전용. 비영어권 사용자는 브라우저 자동 번역 (Chrome 우상단 번역 아이콘) 으로 열람.
 
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -10,25 +11,18 @@ const SITE_URL = 'https://flowdive.app'
 type Props = { params: Promise<{ slug: string }> }
 
 export async function generateStaticParams() {
-  return listBlogSlugs('en').map((slug) => ({ slug }))
+  return listBlogSlugs().map((slug) => ({ slug }))
 }
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params
-  const post = getBlogPost(slug, 'en')
+  const post = getBlogPost(slug)
   if (!post) return { title: 'Not found' }
   const { title, description, date } = post.frontmatter
-  const hasKorean = post.alternates.includes('ko')
   return {
     title,
     description,
-    alternates: {
-      canonical: `${SITE_URL}/blog/${slug}`,
-      languages: {
-        en: `${SITE_URL}/blog/${slug}`,
-        ...(hasKorean ? { ko: `${SITE_URL}/ko/blog/${slug}` } : {}),
-      },
-    },
+    alternates: { canonical: `${SITE_URL}/blog/${slug}` },
     openGraph: {
       title,
       description,
@@ -42,9 +36,8 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params
-  const post = getBlogPost(slug, 'en')
+  const post = getBlogPost(slug)
   if (!post) notFound()
-  const hasKorean = post.alternates.includes('ko')
 
   const { title, description, date, author } = post.frontmatter
 
@@ -56,6 +49,7 @@ export default async function BlogPostPage({ params }: Props) {
     description,
     datePublished: date,
     dateModified: date,
+    inLanguage: 'en',
     author: { '@type': 'Organization', name: author ?? 'Flowdive' },
     publisher: {
       '@type': 'Organization',
@@ -78,16 +72,9 @@ export default async function BlogPostPage({ params }: Props) {
             <img src="/icon.png" alt="" width={24} height={24} className="rounded" />
             <span>Flowdive</span>
           </Link>
-          <div className="flex items-center gap-4 text-sm text-slate-500">
-            {hasKorean && (
-              <Link href={`/ko/blog/${slug}`} className="hover:text-slate-900">
-                한국어로 보기
-              </Link>
-            )}
-            <Link href="/blog" className="hover:text-slate-900">
-              ← All posts
-            </Link>
-          </div>
+          <Link href="/blog" className="text-sm text-slate-500 hover:text-slate-900">
+            ← All posts
+          </Link>
         </div>
       </header>
 
@@ -109,7 +96,7 @@ export default async function BlogPostPage({ params }: Props) {
             href="/"
             className="inline-flex items-center gap-2 bg-slate-900 text-white text-sm font-semibold px-5 py-3 rounded-full hover:bg-slate-800 transition-colors"
           >
-            Flowdive 시작하기 →
+            Get Flowdive →
           </Link>
         </footer>
       </article>
