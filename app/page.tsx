@@ -3,6 +3,12 @@
 import { useEffect, useState } from 'react'
 import { useTranslation } from './i18n/context'
 import { LOCALES, LOCALE_LABELS, type Locale } from './i18n/messages'
+import {
+  PRICES_BY_CURRENCY,
+  currencyFromTimezone,
+  currencyFromIp,
+  type Currency,
+} from './i18n/currency'
 
 // ─────────────────────────────────────────────────────────
 // 헬퍼 컴포넌트
@@ -66,6 +72,13 @@ export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(0)
   // Pro 플랜 토글 — 월/연/평생
   const [proPlan, setProPlan] = useState<'monthly' | 'yearly' | 'lifetime'>('monthly')
+  // 통화 — 1차 timezone 즉시 적용, 2차 IP 결과 도착 시 갱신. 언어 변경과는 독립.
+  const [currency, setCurrency] = useState<Currency>('USD')
+  useEffect(() => {
+    setCurrency(currencyFromTimezone())
+    currencyFromIp().then((c) => { if (c) setCurrency(c) })
+  }, [])
+  const prices = PRICES_BY_CURRENCY[currency]
   // 데스크탑 다운로드 URL — Mac 이면 .dmg, 그 외(Windows/Linux/모바일) 면 .exe.
   // SSR 안정성 위해 초기엔 Windows, 마운트 후 navigator 검사로 갱신.
   const [desktopDownloadUrl, setDesktopDownloadUrl] = useState(WINDOWS_DOWNLOAD_URL)
@@ -293,7 +306,7 @@ export default function Home() {
                     >
                       {t.pricing.planLabel[p]}
                       {p === 'yearly' && proPlan !== 'yearly' && (
-                        <span className="ml-1.5 text-[10px] text-emerald-300">·{t.pricing.yearlyBadge}</span>
+                        <span className="ml-1.5 text-[10px] text-emerald-300">·{t.pricing.yearlyBadge.replace('{n}', String(prices.yearlyDiscount))}</span>
                       )}
                       {p === 'lifetime' && proPlan !== 'lifetime' && (
                         <span className="ml-1.5 text-[10px] text-amber-300">·{t.pricing.lifetimeBadge}</span>
@@ -303,7 +316,7 @@ export default function Home() {
                 </div>
 
                 <div className="flex items-baseline gap-1 mb-8">
-                  <span className="text-5xl font-bold">{t.pricing.pro[proPlan].price}</span>
+                  <span className="text-5xl font-bold">{prices[proPlan]}</span>
                   <span className="text-violet-300 text-base">{t.pricing.pro[proPlan].period}</span>
                   {proPlan === 'lifetime' && (
                     <span className="ml-2 text-xs bg-amber-400/20 border border-amber-300/30 text-amber-200 px-2 py-0.5 rounded-full">

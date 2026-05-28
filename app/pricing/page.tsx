@@ -3,9 +3,15 @@
 // 전용 가격 페이지 — Paddle 도메인 승인용.
 // 홈의 #pricing 섹션과 같은 i18n 데이터를 재사용하되, 독립 URL 로 제공한다.
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useTranslation } from '../i18n/context'
 import { LOCALES, LOCALE_LABELS, type Locale } from '../i18n/messages'
+import {
+  PRICES_BY_CURRENCY,
+  currencyFromTimezone,
+  currencyFromIp,
+  type Currency,
+} from '../i18n/currency'
 
 const CHROME_STORE_URL = '#'
 const SUPPORT_EMAIL = 'support@flowdive.app'
@@ -40,6 +46,13 @@ function LanguageSwitcher() {
 export default function PricingPage() {
   const { t } = useTranslation()
   const [proPlan, setProPlan] = useState<'monthly' | 'yearly' | 'lifetime'>('monthly')
+  // 통화 — timezone 즉시 적용 + IP 결과로 정정
+  const [currency, setCurrency] = useState<Currency>('USD')
+  useEffect(() => {
+    setCurrency(currencyFromTimezone())
+    currencyFromIp().then((c) => { if (c) setCurrency(c) })
+  }, [])
+  const prices = PRICES_BY_CURRENCY[currency]
 
   return (
     <main className="min-h-screen bg-white text-slate-900">
@@ -114,7 +127,7 @@ export default function PricingPage() {
                     >
                       {t.pricing.planLabel[p]}
                       {p === 'yearly' && proPlan !== 'yearly' && (
-                        <span className="ml-1.5 text-[10px] text-emerald-300">·{t.pricing.yearlyBadge}</span>
+                        <span className="ml-1.5 text-[10px] text-emerald-300">·{t.pricing.yearlyBadge.replace('{n}', String(prices.yearlyDiscount))}</span>
                       )}
                       {p === 'lifetime' && proPlan !== 'lifetime' && (
                         <span className="ml-1.5 text-[10px] text-amber-300">·{t.pricing.lifetimeBadge}</span>
@@ -124,7 +137,7 @@ export default function PricingPage() {
                 </div>
 
                 <div className="flex items-baseline gap-1 mb-8">
-                  <span className="text-5xl font-bold">{t.pricing.pro[proPlan].price}</span>
+                  <span className="text-5xl font-bold">{prices[proPlan]}</span>
                   <span className="text-violet-300 text-base">{t.pricing.pro[proPlan].period}</span>
                   {proPlan === 'lifetime' && (
                     <span className="ml-2 text-xs bg-amber-400/20 border border-amber-300/30 text-amber-200 px-2 py-0.5 rounded-full">
