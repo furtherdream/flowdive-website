@@ -101,6 +101,7 @@ export default function Home() {
           <nav className="hidden md:flex items-center gap-10 text-sm font-medium text-slate-300">
             <a href="#features" className="hover:text-white transition-colors">{t.nav.features}</a>
             <a href="#pricing" className="hover:text-white transition-colors">{t.nav.pricing}</a>
+            <a href="/blog" className="hover:text-white transition-colors">Blog</a>
             <a href="#download" className="hover:text-white transition-colors">{t.nav.download}</a>
           </nav>
           <div className="flex items-center gap-3">
@@ -480,6 +481,7 @@ export default function Home() {
           <p>{t.footer.copyright}</p>
           <div className="flex gap-6 flex-wrap justify-center">
             <a href="/pricing" className="hover:text-white transition-colors">Pricing</a>
+            <a href="/blog" className="hover:text-white transition-colors">Blog</a>
             <a href="/terms" className="hover:text-white transition-colors">{t.footer.terms}</a>
             <a href="/privacy" className="hover:text-white transition-colors">{t.footer.privacy}</a>
             <a href="/refund" className="hover:text-white transition-colors">Refund</a>
