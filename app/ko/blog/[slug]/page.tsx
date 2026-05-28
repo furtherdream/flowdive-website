@@ -1,32 +1,33 @@
-// 영어 글 상세 — canonical /blog/<slug>. 한국어 alternate 가 있으면 hreflang + 보기 버튼.
+// 한국어 글 상세 — /ko/blog/<slug>. canonical 은 영어 /blog/<slug>.
 
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { MDXRemote } from 'next-mdx-remote/rsc'
-import { getBlogPost, listBlogSlugs } from '../../lib/blog'
+import { getBlogPost, listBlogSlugs } from '../../../lib/blog'
 
 const SITE_URL = 'https://flowdive.app'
 
 type Props = { params: Promise<{ slug: string }> }
 
 export async function generateStaticParams() {
-  return listBlogSlugs('en').map((slug) => ({ slug }))
+  return listBlogSlugs('ko').map((slug) => ({ slug }))
 }
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params
-  const post = getBlogPost(slug, 'en')
+  const post = getBlogPost(slug, 'ko')
   if (!post) return { title: 'Not found' }
   const { title, description, date } = post.frontmatter
-  const hasKorean = post.alternates.includes('ko')
+  const hasEnglish = post.alternates.includes('en')
   return {
     title,
     description,
     alternates: {
-      canonical: `${SITE_URL}/blog/${slug}`,
+      // canonical 은 영어가 있으면 영어, 없으면 자기 자신
+      canonical: hasEnglish ? `${SITE_URL}/blog/${slug}` : `${SITE_URL}/ko/blog/${slug}`,
       languages: {
-        en: `${SITE_URL}/blog/${slug}`,
-        ...(hasKorean ? { ko: `${SITE_URL}/ko/blog/${slug}` } : {}),
+        ...(hasEnglish ? { en: `${SITE_URL}/blog/${slug}` } : {}),
+        ko: `${SITE_URL}/ko/blog/${slug}`,
       },
     },
     openGraph: {
@@ -34,21 +35,21 @@ export async function generateMetadata({ params }: Props) {
       description,
       type: 'article',
       publishedTime: date,
-      url: `${SITE_URL}/blog/${slug}`,
+      locale: 'ko_KR',
+      url: `${SITE_URL}/ko/blog/${slug}`,
     },
     twitter: { card: 'summary_large_image', title, description },
   }
 }
 
-export default async function BlogPostPage({ params }: Props) {
+export default async function KoBlogPostPage({ params }: Props) {
   const { slug } = await params
-  const post = getBlogPost(slug, 'en')
+  const post = getBlogPost(slug, 'ko')
   if (!post) notFound()
-  const hasKorean = post.alternates.includes('ko')
+  const hasEnglish = post.alternates.includes('en')
 
   const { title, description, date, author } = post.frontmatter
 
-  // Google 리치 결과용 Article 구조화 데이터
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -56,13 +57,14 @@ export default async function BlogPostPage({ params }: Props) {
     description,
     datePublished: date,
     dateModified: date,
+    inLanguage: 'ko',
     author: { '@type': 'Organization', name: author ?? 'Flowdive' },
     publisher: {
       '@type': 'Organization',
       name: 'Flowdive',
       logo: { '@type': 'ImageObject', url: `${SITE_URL}/icon.png` },
     },
-    mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/blog/${slug}` },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/ko/blog/${slug}` },
   }
 
   return (
@@ -79,13 +81,13 @@ export default async function BlogPostPage({ params }: Props) {
             <span>Flowdive</span>
           </Link>
           <div className="flex items-center gap-4 text-sm text-slate-500">
-            {hasKorean && (
-              <Link href={`/ko/blog/${slug}`} className="hover:text-slate-900">
-                한국어로 보기
+            {hasEnglish && (
+              <Link href={`/blog/${slug}`} className="hover:text-slate-900">
+                View in English
               </Link>
             )}
-            <Link href="/blog" className="hover:text-slate-900">
-              ← All posts
+            <Link href="/ko/blog" className="hover:text-slate-900">
+              ← 글 목록
             </Link>
           </div>
         </div>
@@ -119,7 +121,7 @@ export default async function BlogPostPage({ params }: Props) {
 
 function formatDate(iso: string): string {
   try {
-    return new Date(iso).toLocaleDateString('en-US', {
+    return new Date(iso).toLocaleDateString('ko-KR', {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
