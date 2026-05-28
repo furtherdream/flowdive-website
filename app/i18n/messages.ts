@@ -156,7 +156,7 @@ export const messages: Record<Locale, Messages> = {
         '기본 차단 기능은 무료입니다. 더 강력한 집중이 필요할 때 업그레이드하세요.',
       planLabel: { monthly: '월간', yearly: '연간', lifetime: '평생' },
       lifetimeBadge: '초기 이벤트',
-      yearlyBadge: '17% 할인',
+      yearlyBadge: '29% 할인',
       free: {
         name: '무료',
         price: '₩0',
@@ -358,7 +358,7 @@ export const messages: Record<Locale, Messages> = {
         'Core blocking is free. Upgrade when you need stronger focus.',
       planLabel: { monthly: 'Monthly', yearly: 'Yearly', lifetime: 'Lifetime' },
       lifetimeBadge: 'Launch deal',
-      yearlyBadge: 'Save 17%',
+      yearlyBadge: 'Save 31%',
       free: {
         name: 'Free',
         price: '$0',
@@ -560,7 +560,7 @@ export const messages: Record<Locale, Messages> = {
         '基本のブロック機能は無料です。より強力な集中が必要な時にアップグレードしてください。',
       planLabel: { monthly: '月額', yearly: '年額', lifetime: '永年' },
       lifetimeBadge: 'ローンチ特典',
-      yearlyBadge: '17% OFF',
+      yearlyBadge: '29% OFF',
       free: {
         name: '無料',
         price: '¥0',
@@ -761,7 +761,7 @@ export const messages: Record<Locale, Messages> = {
       subheading: '核心屏蔽功能免费。需要更强专注时升级。',
       planLabel: { monthly: '月付', yearly: '年付', lifetime: '永久' },
       lifetimeBadge: '上线特惠',
-      yearlyBadge: '省 17%',
+      yearlyBadge: '省 37%',
       free: {
         name: '免费',
         price: '¥0',
@@ -963,7 +963,7 @@ export const messages: Record<Locale, Messages> = {
         'El bloqueo principal es gratis. Mejora cuando necesites más concentración.',
       planLabel: { monthly: 'Mensual', yearly: 'Anual', lifetime: 'De por vida' },
       lifetimeBadge: 'Oferta de lanzamiento',
-      yearlyBadge: 'Ahorra 17%',
+      yearlyBadge: 'Ahorra 31%',
       free: {
         name: 'Gratis',
         price: '$0',
@@ -1165,7 +1165,7 @@ export const messages: Record<Locale, Messages> = {
         'Grundlegende Blockierung ist kostenlos. Upgrade, wenn du stärkeren Fokus brauchst.',
       planLabel: { monthly: 'Monatlich', yearly: 'Jährlich', lifetime: 'Einmalig' },
       lifetimeBadge: 'Launch-Angebot',
-      yearlyBadge: '17% sparen',
+      yearlyBadge: '31% sparen',
       free: {
         name: 'Kostenlos',
         price: '0 €',
